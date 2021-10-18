@@ -85,3 +85,35 @@ table_marj
     ## #   18-25(P Value) <chr>, 26+(2013-2014) <chr>, 26+(2014-2015) <chr>,
     ## #   26+(P Value) <chr>, 18+(2013-2014) <chr>, 18+(2014-2015) <chr>,
     ## #   18+(P Value) <chr>
+
+## CSS Selectors
+
+## Star Wars Movie Info
+
+``` r
+swm_html = 
+  read_html("https://www.imdb.com/list/ls070150896/")
+```
+
+``` r
+title_vec = 
+  swm_html %>%
+  html_nodes(".lister-item-header a") %>%
+  html_text()
+
+gross_rev_vec = 
+  swm_html %>%
+  html_nodes(".text-small:nth-child(7) span:nth-child(5)") %>%
+  html_text()
+
+runtime_vec = 
+  swm_html %>%
+  html_nodes(".runtime") %>%
+  html_text()
+
+swm_df = 
+  tibble(
+    title = title_vec,
+    rev = gross_rev_vec,
+    runtime = runtime_vec)
+```

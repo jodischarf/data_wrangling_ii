@@ -118,6 +118,10 @@ nyc_water =
   as_tibble()
 ```
 
+## BRFSS
+
+same process, different data
+
 ```{r}
 brfss_smart2010 = 
   GET("https://chronicdata.cdc.gov/resource/acme-vg9e.csv",
